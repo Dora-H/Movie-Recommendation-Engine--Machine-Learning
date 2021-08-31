@@ -3,6 +3,18 @@ The purpose of this recommendation engine is to recommend users some un-watched 
 If any unwatched movie got no rate, the rate will be put median instead, because the median is the value separating the higher half from the lower half of all rates.  
 The basic feature of the median in describing data is that it is not skewed by a small proportion of extremely large or small values, and therefore provides a better representation of a "typical" value.
 
+## Steps:
+1. Call the main finction to work  
+2. Run read() function to read json document  
+3. Run run() function
+4. Run user_similarity() function
+5. Run write_to_csv() function  
+6. Run get_all_movie_rates() function
+7. Draw Moive Watched Times data  
+8. Get median
+9. Draw Similarity 
+10.Draw Movies Rates
+
 
 ## Requirements
 ● Python 3.8    
@@ -51,7 +63,7 @@ MovieRecommendationEngine
         go = MovieRecommendationEngine()
         go.read()
 
-#### 2. Read json document :
+#### 2. Run read() function to read json document :
     def read(self):
         with open('ratings.json', 'r') as f:
                     ratings = json.loads(f.read())
