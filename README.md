@@ -3,11 +3,14 @@ The purpose of this recommendation engine is to recommend users some un-watched 
 If any unwatched movie got no rate, the rate will be put median instead, because the median is the value separating the higher half from the lower half of all rates.  
 The basic feature of the median in describing data is that it is not skewed by a small proportion of extremely large or small values, and therefore provides a better representation of a "typical" value.
 
+
 ## Steps:
    1. Call the main finction to work  
    2. Run read() function to read json document   
       2-1. call get_user_names() function to get all user names 
       2-2. call run() function to run the engine 
+      2-3. in run() function call get_movie_rates_median() function to get median to put in users' unwatched score 
+      2-4. in run() function call draw_user_similarity() function to show data visualization
    3. Run run() function  
       3-1. call get_all_movie_list() function to get all movie list  
       3-2. call user_similarity() function to run(without median)  
@@ -17,10 +20,13 @@ The basic feature of the median in describing data is that it is not skewed by a
    6. Run get_all_movie_rates() function  
       6-1. call  draw_movies_watched_counts() function  
    7. Draw Moive Watched Times data  
+      7-1. Show photo
    8. Get median  
    9. Draw Similarity  
-      9-1 call draw_movie_rates() function to show data visualization  
+      9-1. Show Photo
+      9-2. call draw_movie_rates() function to show data visualization  
    10. Draw Movies Rates 
+     10-1. Show Photo
 
 
 ## Requirements
@@ -238,8 +244,10 @@ MovieRecommendationEngine
                         all_movie_rates[movie] = [ratings[name][movie]]
                         # 如果沒看過此電影次數直接等於一
                         movie_watched_counts[movie] = 1
+                        
 ##### 6-1. call  draw_movies_watched_counts() function :                        
             self.draw_movies_watched_counts(movie_watched_counts)
+            
 #### 7. Draw Moive Watched Times data:
        def draw_movies_watched_counts(self, counts):
             '''{'Inception': 6, 'Pulp Fiction': 7, 'Anger Management': 4,
@@ -259,11 +267,13 @@ MovieRecommendationEngine
             mp.bar(m, r, width=0.5)
             mp.tight_layout()
             mp.show()
+            
+##### 7-1. Show photo           
 ![Moive_Watched_Times](https://user-images.githubusercontent.com/70878758/131440891-0cf27597-7375-43a0-9f5a-197cb23363ee.jpeg)
             
             return all_movie_rates
             
-##### in run() function call get_movie_rates_median() function to get median to put in users' unwatched score:
+##### 2-3. in run() function call get_movie_rates_median() function to get median to put in users' unwatched score:
         median_ratings = self.get_movie_rates_median(all_movie_rates, ratings)
         
 #### 8. Get median
@@ -277,7 +287,7 @@ MovieRecommendationEngine
                 ratings[name][movie] = mrm[movie]
         return ratings
         
-##### in run() function call draw_user_similarity() function to show data visualization:
+##### 2-4. in run() function call draw_user_similarity() function to show data visualization:
         self.draw_user_similarity(user_names, max_arg, median_ratings)
         
 #### 9. Draw Similarity : 
@@ -308,9 +318,11 @@ MovieRecommendationEngine
         mp.tight_layout()
         sns.set()
         mp.show()
+        
+##### 9-1. Show Photo        
 ![Similarity](https://user-images.githubusercontent.com/70878758/131438286-433033d4-ba07-468c-8d30-ec1f6a752a0d.jpeg)
 
- ##### 9-1 call draw_movie_rates() function to show data visualization:
+##### 9-2 call draw_movie_rates() function to show data visualization:
         self.draw_movie_rates(ratings, user_names)
 
 #### 10. Draw Movies Rates : 
@@ -405,5 +417,7 @@ MovieRecommendationEngine
 
         mp.tight_layout()
         mp.show()
+        
+##### 10-1. Show Photo
 ![Movies_Rates](https://user-images.githubusercontent.com/70878758/131441946-0d8f2be7-5e69-4ce7-99ac-0c46abe2070c.png)
 
