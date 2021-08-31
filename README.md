@@ -219,6 +219,25 @@ MovieRecommendationEngine
                         movie_watched_counts[movie] = 1
 ##### call  draw_movies_watched_counts() function :                        
             self.draw_movies_watched_counts(movie_watched_counts)
+#### 7. Draw Moive Watched Times data:
+       def draw_movies_watched_counts(self, counts):
+            '''{'Inception': 6, 'Pulp Fiction': 7, 'Anger Management': 4,
+                 'Fracture': 8, 'Serendipity': 7, 'Jerry Maguire': 7}'''
+            m, r = [], []
+            # 依據電影觀看次數多次至少次排序呈現
+            for movie, count in sorted(counts.items(), key=lambda counts:counts[1], reverse=True):
+                m.append(movie)
+                r.append(count)
+
+            mp.figure('Moive Watched Times', figsize=self.fig_size)
+            sns.set(context='notebook', style='white')
+            mp.title('Moive Watched Times', fontsize=self.title_fontsize)
+            mp.xlabel(self.movie_name, fontsize=self.label_fontsize)
+            mp.ylabel('Counts', fontsize=self.label_fontsize)
+            mp.xticks(range(0, len(m)), m, rotation=10)
+            mp.bar(m, r, width=0.5)
+            mp.tight_layout()
+            mp.show()
 ![Moive_Watched_Times](https://user-images.githubusercontent.com/70878758/131440891-0cf27597-7375-43a0-9f5a-197cb23363ee.jpeg)
             
             return all_movie_rates
