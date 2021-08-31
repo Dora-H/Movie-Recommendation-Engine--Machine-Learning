@@ -28,8 +28,8 @@ Filtering Method : Collaborative Filtering
    9. Draw Similarity  
       9-1. Show Photo  
       9-2. call draw_movie_rates() function to show data visualization  
-   10. Draw Movies Rates 
-     10-1. Show Photo
+   10. Draw Movies Rates  
+      10-1. Show Photo
 
 
 ## Requirements
