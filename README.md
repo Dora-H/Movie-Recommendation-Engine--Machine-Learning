@@ -6,7 +6,7 @@ The basic feature of the median in describing data is that it is not skewed by a
 ## Filtering Method
 Collaborative Filtering  
 
-## Statistic Method
+## Similarity Measurement
 Euclidean Distance  
 Median
 
