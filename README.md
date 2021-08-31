@@ -8,7 +8,10 @@ Collaborative Filtering
 
 ## Similarity Measurement
 Euclidean Distance  
+
+## Replace Missing Values
 Median
+
 
 ## Steps:
    1. Call the main finction to work  
