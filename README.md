@@ -66,21 +66,24 @@ MovieRecommendationEngine
         # 先遍歷每一行使用者
         for user_row in user_names:
             score_row = []
+            
             # 每一行中去配對每一列中是否與其他人有看過相同電影
             for user_column in user_names:
                 # 創建一個空的電影set，避免電影名稱重複，用來裝每一行&每一列都看過的電影集合
                 movies = set()
+                
                 # 找尋每一行使用者看過的電影資料
                 for movie in ratings[user_row]:
                     # 如果每一行使用者看過的電影也在每一列中
                     if movie in ratings[user_column]:
                         # 表示每一行與每一列都看過相同電影，加進movies 集合中
                         movies.add(movie)
-                        # 如果電影集合長度為0
+                        
+                # 如果電影集合長度為0
                 if len(movies) == 0:
                     # 表示每一行&每一列沒有看過一樣的電影(可能看的類型迥異)，將得分設為0
                     score = 0
-                    # 其餘表示有看過一樣的電影
+                # 其餘表示有看過一樣的電影，將以歐式距離來計算
                 else:
                     a, b = [], []
                     for x in movies:
@@ -91,12 +94,19 @@ MovieRecommendationEngine
                     # 計算a,b的歐式距離
                     a, b = np.array(a), np.array(b)
                     score = 1 / (1 + np.sqrt(((a-b)**2).sum()))
+                    
+                # 將計算出的得分加進score_row
                 score_row.append(score)
+                # 將得出的電影名稱更新進all_movie_list
                 all_movie_list.update(movies)
-            scmat.append(score_row)
+                
+            scmat.append(score_row)                       
         sorted_all_movie_list = self.get_all_movie_list(all_movie_list)
+        
+##### call user_similarity() function to run(without median):
         self.user_similarity(ratings)
-
+        
+##### deal with other data to get similarest user:
         new_matrix, similar, max_arg = [], [], []
         for row in scmat:
             new_row = []
@@ -110,9 +120,14 @@ MovieRecommendationEngine
             max_arg.append(np.argmax(new_row)+0.2)
             similar.append(user_names[np.argmax(new_row)])
 
+##### call get_all_movie_rates() function:
         all_movie_rates = self.get_all_movie_rates(ratings)
+##### call get_movie_rates_median() function to get median to put in users' unwatched score:
         median_ratings = self.get_movie_rates_median(all_movie_rates, ratings)
+##### call draw_user_similarity() function to show data visualization:
         self.draw_user_similarity(user_names, max_arg, median_ratings)
+![Similarity](https://user-images.githubusercontent.com/70878758/131438286-433033d4-ba07-468c-8d30-ec1f6a752a0d.jpeg)
+
 
 #### 3. Write recommendations to CSV, name document'recommendation' :           
     def write_to_csv(self, recom_list):
