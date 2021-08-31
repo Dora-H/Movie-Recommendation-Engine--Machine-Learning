@@ -7,9 +7,9 @@ The basic feature of the median in describing data is that it is not skewed by a
 ## Steps:
    1. Call the main finction to work  
    2. Run read() function to read json document   
-      2-1. call get_user_names() function to get all user names 
-      2-2. call run() function to run the engine 
-      2-3. in run() function call get_movie_rates_median() function to get median to put in users' unwatched score 
+      2-1. call get_user_names() function to get all user names  
+      2-2. call run() function to run the engine  
+      2-3. in run() function call get_movie_rates_median() function to get median to put in users' unwatched score  
       2-4. in run() function call draw_user_similarity() function to show data visualization
    3. Run run() function  
       3-1. call get_all_movie_list() function to get all movie list  
@@ -23,7 +23,7 @@ The basic feature of the median in describing data is that it is not skewed by a
       7-1. Show photo
    8. Get median  
    9. Draw Similarity  
-      9-1. Show Photo
+      9-1. Show Photo  
       9-2. call draw_movie_rates() function to show data visualization  
    10. Draw Movies Rates 
      10-1. Show Photo
