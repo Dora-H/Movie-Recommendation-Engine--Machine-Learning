@@ -49,7 +49,7 @@ MovieRecommendationEngine
         go = MovieRecommendationEngine()
         go.read()
 
-#### 2. read json document :
+#### 2. Read json document :
     def read(self):
         with open('ratings.json', 'r') as f:
                     ratings = json.loads(f.read())
@@ -59,11 +59,11 @@ MovieRecommendationEngine
 ##### call run() function to run the engine
             self.run(user_names, ratings)
             
-#### 3. run run() function :   
+#### 3. Run run() function :   
     def run(self, user_names, ratings):
-        all_movie_list = set()
+        all_movie_list, scmat = set(), []
+        
         # 先遍歷每一行使用者
-        scmat = []
         for user_row in user_names:
             score_row = []
             # 每一行中去配對每一列中是否與其他人有看過相同電影
@@ -113,3 +113,12 @@ MovieRecommendationEngine
         all_movie_rates = self.get_all_movie_rates(ratings)
         median_ratings = self.get_movie_rates_median(all_movie_rates, ratings)
         self.draw_user_similarity(user_names, max_arg, median_ratings)
+
+#### 3. Write recommendations to CSV, name document'recommendation' :           
+    def write_to_csv(self, recom_list):
+            with open('recommendations.csv', 'w') as f:
+                for data in recom_list:
+                    seq = ['Recommend ' + str(data[0]) + str(data[1])]
+                    f.writelines(seq)
+                    f.write('\n')
+            f.close()
