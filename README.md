@@ -4,23 +4,23 @@ If any unwatched movie got no rate, the rate will be put median instead, because
 The basic feature of the median in describing data is that it is not skewed by a small proportion of extremely large or small values, and therefore provides a better representation of a "typical" value.
 
 ## Steps:
-1. Call the main finction to work  
-2. Run read() function to read json document  
-   2-1. call get_user_names() function to get all user names
-   2-2. call run() function to run the engine
-3. Run run() function
-   3-1. call get_all_movie_list() function to get all movie list
-   3-2. call user_similarity() function to run(without median)
-4. Run user_similarity() function
-   4-1. call write_to_csv() function to write
-5. Run write_to_csv() function  
-6. Run get_all_movie_rates() function
-   6-1. call  draw_movies_watched_counts() function
-7. Draw Moive Watched Times data  
-8. Get median
-9. Draw Similarity 
-   9-1 call draw_movie_rates() function to show data visualization 
-10.Draw Movies Rates
+   1. Call the main finction to work  
+   2. Run read() function to read json document   
+      2-1. call get_user_names() function to get all user names 
+      2-2. call run() function to run the engine 
+   3. Run run() function  
+      3-1. call get_all_movie_list() function to get all movie list  
+      3-2. call user_similarity() function to run(without median)  
+   4. Run user_similarity() function  
+      4-1. call write_to_csv() function to write  
+   5. Run write_to_csv() function  
+   6. Run get_all_movie_rates() function  
+      6-1. call  draw_movies_watched_counts() function  
+   7. Draw Moive Watched Times data  
+   8. Get median  
+   9. Draw Similarity  
+      9-1 call draw_movie_rates() function to show data visualization  
+   10. Draw Movies Rates 
 
 
 ## Requirements
