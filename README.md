@@ -263,6 +263,7 @@ MovieRecommendationEngine
     def draw_user_similarity(self, user_names, max_arg, ratings):
         mp.figure(self.x, figsize=self.fig_size)
         sns.set(context='talk', style='white')
+        
         mp.subplot(211)
         mp.title(self.x + ' '+self.y, fontsize=self.title_fontsize)
         mp.grid(":")
@@ -282,11 +283,14 @@ MovieRecommendationEngine
         mp.scatter(user_names, max_arg, color='orange', s=150, zorder=3)
         mp.vlines(user_names, -0.2, max_arg, linestyle="dashed", color='coral')
         mp.hlines(max_arg, -0.8, user_names, linestyle="dashed", color='coral', linewidth=3)
+        
         mp.tight_layout()
         sns.set()
         mp.show()
-        self.draw_movie_rates(ratings, user_names)
 ![Similarity](https://user-images.githubusercontent.com/70878758/131438286-433033d4-ba07-468c-8d30-ec1f6a752a0d.jpeg)
+
+ ##### in draw_user_similarity() function call draw_movie_rates() function to show data visualization:
+        self.draw_movie_rates(ratings, user_names)
 
 #### 10. Draw Movies Rates : 
     def draw_movie_rates(self, ratings, user_names):
