@@ -1,5 +1,7 @@
 # Movie-Recommendation-Engine--Machine-Learning
 The purpose of this recommendation engine is to recommend users some un-watched movies.
+If any unwatched movie got no rate, the rate will be put median instead, because the median is the value separating the higher half from the lower half of all rates.  
+The basic feature of the median in describing data is that it is not skewed by a small proportion of extremely large or small values, and therefore provides a better representation of a "typical" value.
 
 
 ## Requirements
