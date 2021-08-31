@@ -3,6 +3,9 @@ The purpose of this recommendation engine is to recommend users some un-watched 
 If any unwatched movie got no rate, the rate will be put median instead, because the median is the value separating the higher half from the lower half of all rates.  
 The basic feature of the median in describing data is that it is not skewed by a small proportion of extremely large or small values, and therefore provides a better representation of a "typical" value.
 
+# Strategy 
+Filtering Method : Collaborative Filtering
+
 
 ## Steps:
    1. Call the main finction to work  
@@ -195,6 +198,7 @@ MovieRecommendationEngine
             for movie, score_sum in score_sums.items():
                 movie_ranks[movie] = score_sum / user_weight_sums[movie]
             valid_recomm_index = np.array(list(movie_ranks.values())).argsort()[::-1]
+            # 推薦自己沒看過的，然後再去過濾與自己相似程度最高的人的清單中裡沒看過的評分高的依序
             recomms = np.array(list(movie_ranks.keys()))[valid_recomm_index]
             recom_list.append((user, recomms))
         
