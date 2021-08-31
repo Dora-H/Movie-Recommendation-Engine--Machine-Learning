@@ -6,13 +6,20 @@ The basic feature of the median in describing data is that it is not skewed by a
 ## Steps:
 1. Call the main finction to work  
 2. Run read() function to read json document  
+   2-1. call get_user_names() function to get all user names
+   2-2. call run() function to run the engine
 3. Run run() function
+   3-1. call get_all_movie_list() function to get all movie list
+   3-2. call user_similarity() function to run(without median)
 4. Run user_similarity() function
+   4-1. call write_to_csv() function to write
 5. Run write_to_csv() function  
 6. Run get_all_movie_rates() function
+   6-1. call  draw_movies_watched_counts() function
 7. Draw Moive Watched Times data  
 8. Get median
 9. Draw Similarity 
+   9-1 call draw_movie_rates() function to show data visualization 
 10.Draw Movies Rates
 
 
@@ -68,9 +75,9 @@ MovieRecommendationEngine
         with open('ratings.json', 'r') as f:
                     ratings = json.loads(f.read())
 
-##### call get_user_names() function to get all user names :
+##### 2-1. call get_user_names() function to get all user names :
             user_names = self.get_user_names(ratings)
-##### call run() function to run the engine : 
+##### 2-2. call run() function to run the engine : 
             self.run(user_names, ratings)
             
 #### 3. Run run() function :   
@@ -114,10 +121,12 @@ MovieRecommendationEngine
                 # 將得出的電影名稱更新進all_movie_list
                 all_movie_list.update(movies)
                 
-            scmat.append(score_row)                       
+            scmat.append(score_row)
+            
+##### 3-1. call get_all_movie_list) function to get all movie list
         sorted_all_movie_list = self.get_all_movie_list(all_movie_list)
         
-##### call user_similarity() function to run(without median):
+##### 3-2. call user_similarity() function to run(without median):
         self.user_similarity(ratings, user_names, scmat)
 
 ### 4. Run user_similarity() function :
@@ -183,7 +192,7 @@ MovieRecommendationEngine
             recomms = np.array(list(movie_ranks.keys()))[valid_recomm_index]
             recom_list.append((user, recomms))
         
-##### call write_to_csv() function to write :  
+##### 4-1. call write_to_csv() function to write :  
         self.write_to_csv(recom_list)
 
 #### 5. Run write_to_csv() function : 
@@ -229,7 +238,7 @@ MovieRecommendationEngine
                         all_movie_rates[movie] = [ratings[name][movie]]
                         # 如果沒看過此電影次數直接等於一
                         movie_watched_counts[movie] = 1
-##### call  draw_movies_watched_counts() function :                        
+##### 6-1. call  draw_movies_watched_counts() function :                        
             self.draw_movies_watched_counts(movie_watched_counts)
 #### 7. Draw Moive Watched Times data:
        def draw_movies_watched_counts(self, counts):
@@ -301,7 +310,7 @@ MovieRecommendationEngine
         mp.show()
 ![Similarity](https://user-images.githubusercontent.com/70878758/131438286-433033d4-ba07-468c-8d30-ec1f6a752a0d.jpeg)
 
- ##### in draw_user_similarity() function call draw_movie_rates() function to show data visualization:
+ ##### 9-1 call draw_movie_rates() function to show data visualization:
         self.draw_movie_rates(ratings, user_names)
 
 #### 10. Draw Movies Rates : 
