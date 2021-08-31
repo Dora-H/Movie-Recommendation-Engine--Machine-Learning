@@ -8,7 +8,6 @@ Collaborative Filtering
 
 ## Statistic Method
 Euclidean Distance  
-Pearson correlation coefficient  
 Median
 
 ## Steps:
