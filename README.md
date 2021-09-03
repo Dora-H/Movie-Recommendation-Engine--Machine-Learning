@@ -10,7 +10,7 @@ Collaborative Filtering
 Euclidean Distance  
 
 ## Replace Missing Values
-Median
+Zero, median(only for drawing missing data)
 
 
 ## Steps:
