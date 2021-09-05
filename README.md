@@ -8,7 +8,7 @@ Collaborative Filtering
 ## Similarity Measurement
 Euclidean Distance  
 
-## Replace Missing Values
+## Missing Value Imputation
 Zero, median(only for drawing missing data)
 
 
